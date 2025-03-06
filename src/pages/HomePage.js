@@ -93,21 +93,211 @@ function HomePage() {
 }
 
 
+.slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-banner {
+            display: flex;
+            width: 300%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide-banner img {
+            width: 100%;
+            flex: 1;
+            height: 600px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* footer */
+footer{
+	background-color: #333;
+    padding: 10px 30px;
+margin: 10px auto;
+}
+.container{
+color: #fff;
+    opacity: 0.9;
+}
+.contact{
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 20px;
+	margin-top: 20px;
+}
+     h3{
+        font-size: 24px;
+    font-weight:700;
+    }
+.info-contact li{
+    display:block;
+    justify-self: start;
+    margin: 0px 5px;
+}
+    .info-contact i{
+        margin: 0px 5px;
+    }
+.info-address {
+  list-style: none;
+}
+.info-address li > h3{
+    display:block;
+    justify-self: start;
+  
+}
+.info-address li > p{
+    display:block;
+    justify-self: start;
+}
+    .info-address i {
+        margin: 0px 5px;
+    }
+.about  {
+	cursor: pointer;
+	margin: 0px 5px;
+	padding: 0px 10px;
+}
+.about h3{
+    font-size: 20px;
+    font-weight:700;
+}
+.about p{
+font-size: 18px;
+    font-weight:700;
+}
+.address h3{  
+    font-size: 20px;
+    font-weight:700;
+}
+    .pay h3{
+      font-size: 20px;
+    font-weight:700;
+    }
+.ol-pay{
+	display: flex;
+	justify-content: space-around;
+}
+
 </style>
 <body>
+   <div class="slider-container">
+        <div class="slide-banner">
+            <img src="https://topprint.vn/wp-content/uploads/2021/07/banner-my-pham-dep-12.png" alt="Banner 1">
+            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/16/banner-quang-cao-my-pham_083548926.jpg" alt="Banner 2">
+            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/16/anh-banner-quang-cao-my-pham-dep_083546254.jpg" alt="Banner 3">
+        </div>
+    <button class="prev">❮</button>
+    <button class="next">❯</button>
+</div>
   <div class="container">
       <h2 class="text-center my-4">Danh sách sản phẩm</h2>
       <div id="product-list" class="d-flex flex-wrap justify-content-center">Đang tải...</div>
   </div>
+
+  <footer>
+			<div class="container">
+				<div class="contact">
+					<div class="about">
+						<h3>Giới thiệu</h3>
+						<p>Đức Toán Store-Chuỗi phân phối mỹ phẩm, thực phẩm</p>
+						<ul class="info-contact">
+                            <li><i class="fa-solid fa-phone"></i>0333777999</li>
+                            <li><i class="fa-solid fa-envelope"></i>toan@gmail.com</li>
+                            <li><i class="fa-solid fa-clock"></i>Giờ mở cửa: 8:30-22:00</li>
+                            <li><i class="fa-solid fa-headphones"></i>Nhân viên tư vẫn phản hồi nhắn đến 24:00(Mỗi ngày)</li>
+                        </ul>
+					</div>
+					<div class="address">
+						<h3>Địa chỉ cửa hàng</h3>
+                        <ul class= "info-address">
+                            <li>
+                                <h3>Hà Nội</h3>
+						        <p><i class="fa-solid fa-location-dot"></i>Ngõ 59 Phạm Văn Đồng-Mai Dịch-Cầu Giấy-Hà Nội</p>
+                            </li>
+                            <li>
+                                <h3>HỒ CHÍ MINH</h3>
+						        <p><i class="fa-solid fa-location-dot"></i>297/3 Tô Hiến Thành, Phường 13, Quận 10, TP Hồ Chí Minh</p>
+                            </li>
+                        </ul>
+						
+						
+					</div>
+					<div class="pay">
+						<h3>Phương thức thanh toán</h3>
+						<div class="ol-pay">
+							<p>VNPAY</p>
+							<p>COD</p>
+							<p>	<i class="fa-brands fa-apple-pay"></i></p>
+						</div>
+		
+					</div>
+				</div>
+				<h3>Bản quyền thuộc về Đức Toán Store</h3>
+			</div>
+	
+			</footer>
+
+
   <script src="/src/app.js"></script>
 </body>
 </html>
   `;
 }
+// slide-banner
+document.addEventListener("DOMContentLoaded", function () {
+    let currentIndex = 0;
+    const slides = document.querySelector(".slide-banner");
+    const totalSlides = document.querySelectorAll(".slide-banner img").length;
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
 
-let productsData = []; // Lưu trữ toàn bộ sản phẩm
-let displayedCount = 4; // Số lượng sản phẩm ban đầu
+    function updateSlide() {
+        let slideWidth = slides.children[0].offsetWidth; 
+        slides.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    }
 
+    function nextSlide() {
+        if (currentIndex === totalSlides - 1) {
+            currentIndex = 0; 
+        } else {
+            currentIndex++;
+        }
+        updateSlide();
+    }
+
+    function prevSlide() {
+        if (currentIndex === 0) {
+            currentIndex = totalSlides - 1; 
+        } else {
+            currentIndex--;
+        }
+        updateSlide();
+    }
+
+    nextButton.addEventListener("click", nextSlide);
+    prevButton.addEventListener("click", prevSlide);
+
+    setInterval(nextSlide, 7000);
+});
+
+
+
+
+
+let productsData = []; 
+let displayedCount = 8; 
 function renderProducts() {
     const productsList = document.getElementById("product-list");
     productsList.innerHTML = productsData
@@ -116,8 +306,7 @@ function renderProducts() {
             <div class="product-card">
                 <img src="${product.thumbnail}" alt="${product.title}">
                 <h5>${product.title}</h5>
-                <p>Giá: $${product.price}</p>
-                <p class="description-product">Mô tả: ${product.description}</p>
+                <p>${product.price}$</p>
                 <div class="button-group">
                     <button data-id="${product.id}" class="buy-now">Mua ngay</button>
                     <button data-id="${product.id}" class="view-detail">Chi tiết sản phẩm</button>

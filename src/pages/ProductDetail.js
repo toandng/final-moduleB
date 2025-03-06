@@ -33,7 +33,8 @@ function ProductDetail(id) {
     top: 20px;
     right: 20px;
     background: #fff;
-    padding: 10px;
+     padding: 15px;
+	margin-top: 50px;
     border-radius: 50%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -50,9 +51,25 @@ function ProductDetail(id) {
     padding: 2px 5px;
     border-radius: 50%;
 }
+.card-body{
+    position: relative;
+    top: 100px;
+}
 
-
-
+#app{
+    position:relative;
+    top:100px;
+}
+#product-info{
+    width: 30%;
+    display: block;
+    margin: 30px 0px;
+}
+    #reviews{
+        width: 30%;
+        display: block;
+        margin: 30px 0px;
+    }
 </style>
 <body>
  <div class="container">
@@ -95,7 +112,7 @@ function fetchProductDetail(id) {
         : "<p>Chưa có đánh giá nào.</p>";
 
             productDetailContainer.innerHTML = `
-                <a href="/" class="btn btn-primary">Trang chủ</a>
+                <a href="/" class="btn btn-primary" style="position:relative; top: 100px">Trang chủ</a>
                 <div class="product-cart">
                     <div class="card">
                         <div class="card-img"><img src="${product.thumbnail}" alt="${product.title}"></div>
@@ -122,9 +139,9 @@ function fetchProductDetail(id) {
                 <div id="product-info">
                     <h5>${product.title}</h5>
                     <p>${product.description}</p>
-                    <p>Danh mục: ${product.category}</p>
-                    <p>Tồn kho: ${product.stock}</p>
+                      <p>Danh mục: ${product.category}</p>
                     <p>Thương hiệu: ${product.brand}</p>
+                    <p>Tồn kho: ${product.stock}</p>
                     <p>Chính sách trả lại: ${product.returnPolicy}, Số lượng tối thiểu: ${product.minimumOrderQuantity}</p>
                     <p>Tags: ${tags}</p>
                 </div>
