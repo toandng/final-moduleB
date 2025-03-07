@@ -1,4 +1,5 @@
 import { router } from "../../main";
+import "../../style.css";
 function HomePage() {
   return `
 <!DOCTYPE html>
@@ -197,6 +198,21 @@ font-size: 18px;
 }
 .product-card h5{
     color:#000;
+}
+
+/* media */
+@media (max-width: 768px) {
+    .product-card {
+        width:48%;
+    }
+    .slide-banner img{
+        width:20%;
+        height: 200px;
+    }
+    .contact{
+        display: block;
+        
+    }
 }
 </style>
 <body>

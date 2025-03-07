@@ -1,4 +1,4 @@
-
+import "../../style.css";
 function ProductDetail(id) {
     return `
         
@@ -219,6 +219,75 @@ font-size: 18px;
 }
 .buy-modal{
     display:flex;
+}
+@media (max-width: 768px) {
+    .product-cart {
+        display:block;
+    }
+   .card{
+        background: #f5f5f5;
+        border:none;
+   }
+   .buy-modal{
+    display:block;
+   }
+    .nav-tabs{
+        margin:100px auto;
+    }
+        #product-info{
+            width:100%;
+
+    }
+            #reviews{
+                width:100%;
+            }
+    .buy-card button{
+    margin: 0px -15px;
+    padding: 12px 49px;
+    width:300px;
+    }
+    .add-card button {
+        margin: 9px -30px;
+        padding: 12px 6px;
+        width:300px;
+    }
+    .quantity-container {
+        width: 300px;
+        margin: 0px -18px;
+    }
+    .contact{
+        display:block;
+
+    }
+
+}
+    @media (min-width: 768px) {
+   .card{
+        background: #f5f5f5;
+        border:none;
+   }
+   .buy-modal{
+    display:flex;
+    margin:50px auto;
+   }
+    .nav-tabs{
+        margin:100px auto;
+    }
+    .buy-card button{
+           margin: 8px 7px;
+        padding: 12px 49px;
+        width: 200px;
+    }
+    .add-card button {
+                margin: 9px 7px;
+        padding: 12px 6px;
+        width: 200px;
+    }
+    .quantity-container {
+        width: 200px;
+        margin: 7px 16px;
+    }
+
 }
 </style>
 <body>
