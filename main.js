@@ -7,9 +7,10 @@ import HomePage from "./src/pages/HomePage";
 import afterLogin from "./src/features/auth/afterLogin";
 import afterRegister from "./src/features/auth/afterRegister";
 import ProductDetailWithFetch from "./src/pages/ProductDetail";
-import ProductClother from "./src/pages/ProductClother";
+import ProductClother from "./src/pages/CheckOut";
 import Cosmetis from "./src/pages/CosmeticsPage";
 // import NotFoundPage from "./src/pages/NotFoundPage";
+// import Header from "./layouts/Header";
 
 
 const app = document.querySelector("#app");
@@ -31,7 +32,7 @@ router
             console.log("ID sản phẩm:", data.id);
             render(() => ProductDetailWithFetch(data));
         },
-        "/cother": () => render(ProductClother, null),
+        "/checkout": () => render(ProductClother, null),
         "/cosmetics": () => render(Cosmetis, null)
     })
     .notFound(() => render(NotFoundPage));

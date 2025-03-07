@@ -11,7 +11,10 @@ function HomePage() {
   <link rel="stylesheet" href="styles.css">
 </head>
 <style>
-
+.container{
+    background: #000;
+    width:100%;
+}
 .product-card {
     width: 24%;
     padding: 15px;
@@ -34,7 +37,7 @@ function HomePage() {
 
 .product-card img {
     width: 100%;
-    height: 150px;
+    height: 220px;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -46,8 +49,11 @@ function HomePage() {
 }
 
 .product-card p {
-    font-size: 14px;
-    color: #555;
+    font-size: 18px;
+    font-weight:600;
+    display:block;
+    justify-self: start;
+    color: #000;
 }
 
 .description-product {
@@ -123,7 +129,7 @@ function HomePage() {
 
         /* footer */
 footer{
-	background-color: #333;
+	background-color: #000;
     padding: 10px 30px;
 margin: 10px auto;
 }
@@ -189,7 +195,9 @@ font-size: 18px;
 	display: flex;
 	justify-content: space-around;
 }
-
+.product-card h5{
+    color:#000;
+}
 </style>
 <body>
    <div class="slider-container">
@@ -205,7 +213,6 @@ font-size: 18px;
       <h2 class="text-center my-4">Danh sách sản phẩm</h2>
       <div id="product-list" class="d-flex flex-wrap justify-content-center">Đang tải...</div>
   </div>
-
   <footer>
 			<div class="container">
 				<div class="contact">
@@ -292,10 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(nextSlide, 7000);
 });
 
-
-
-
-
 let productsData = []; 
 let displayedCount = 8; 
 function renderProducts() {
@@ -304,17 +307,14 @@ function renderProducts() {
         .slice(0, displayedCount)
         .map(product => `
             <div class="product-card">
-                <img src="${product.thumbnail}" alt="${product.title}">
+                <img src="${product.thumbnail}" alt="${product.title}" 
+                     class="view-detail" data-id="${product.id}">
                 <h5>${product.title}</h5>
-                <p>${product.price}$</p>
-                <div class="button-group">
-                    <button data-id="${product.id}" class="buy-now">Mua ngay</button>
-                    <button data-id="${product.id}" class="view-detail">Chi tiết sản phẩm</button>
-                </div>
+                <p class="product-price">${product.price}$</p>
             </div>
         `).join("");
 
-    // Kiểm tra nếu còn sản phẩm để hiển thị, thêm nút "Xem thêm"
+    
     if (displayedCount < productsData.length) {
         productsList.innerHTML += `
             <div class="text-center w-100 mt-3">
@@ -323,13 +323,14 @@ function renderProducts() {
         `;
 
         document.getElementById("load-more").addEventListener("click", () => {
-            displayedCount += 4; // Tăng số lượng sản phẩm hiển thị lên 4
-            renderProducts(); // Cập nhật lại danh sách
+            displayedCount += 4;
+            renderProducts();
         });
     }
 
-    addEventListeners(); // Gán sự kiện click cho các nút trong danh sách
+    addEventListeners(); 
 }
+
 
 function addEventListeners() {
     document.querySelectorAll(".view-detail").forEach(button => {
@@ -339,12 +340,12 @@ function addEventListeners() {
         });
     });
 
-    document.querySelectorAll(".buy-now").forEach(button => {
-        button.addEventListener("click", (e) => {
-            const id = e.target.getAttribute("data-id");
-            router.navigate(`/product/${id}`);
-        });
-    });
+    // document.querySelectorAll(".buy-now").forEach(button => {
+    //     button.addEventListener("click", (e) => {
+    //         const id = e.target.getAttribute("data-id");
+    //         router.navigate(`/product/${id}`);
+    //     });
+    // });
 }
 
 function fetchProducts() {

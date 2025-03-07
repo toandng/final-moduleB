@@ -1,3 +1,4 @@
+
 const cartIcon = document.getElementById("cart-icon");
 const cartCount = document.getElementById("cart-count");
 const cartModal = document.getElementById("cart-modal");
@@ -34,15 +35,11 @@ function updateCartUI() {
         div.innerHTML = `
             <img src="${item.thumbnail}" alt="${item.title}">
             <div class="cart-item-info">
-                <p>${item.name}</p>
+                <p>${item.title}</p>
                 <p>${item.quantity} x ${item.price.toLocaleString()}đ</p>
             </div>
-            <div class="quantity-container">
-                <button class="qty-btn minus" data-id="${item.id}">−</button>
-                <input type="number" class="qty-input" value="${item.quantity}" min="1" data-id="${item.id}">
-                <button class="qty-btn plus" data-id="${item.id}">+</button>
-            </div>
-            <button class="remove" data-id="${item.id}">🗑</button>
+
+            <button class="remove" data-id="${item.id}">X</button>
         `;
         cartItemsContainer.appendChild(div);
     });
@@ -53,7 +50,6 @@ function updateCartUI() {
         });
     });
 
-  
     document.querySelectorAll(".qty-btn").forEach(btn => {
         btn.addEventListener("click", function () {
             let productId = this.getAttribute("data-id");
@@ -77,7 +73,6 @@ function updateCartUI() {
     subtotalElement.textContent = subtotal.toLocaleString() + "đ";
     totalElement.textContent = subtotal.toLocaleString() + "đ";
 }
-
 
 function removeFromCart(productId) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
