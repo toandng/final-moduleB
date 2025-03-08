@@ -9,12 +9,14 @@ import afterRegister from "./src/features/auth/afterRegister";
 import ProductDetailWithFetch from "./src/pages/ProductDetail";
 import ProductClother from "./src/pages/CheckOut";
 import Cosmetis from "./src/pages/CosmeticsPage";
+import ProductsItem from "./src/pages/ProductIteams";
+import Layouts from "./src/layouts/Layouts";
 // import NotFoundPage from "./src/pages/NotFoundPage";
-// import Header from "./layouts/Header";
+
 
 
 const app = document.querySelector("#app");
-
+document.getElementById("app").innerHTML = Layouts(HomePage());
 export const router = new Navigo("/", { linksSelector: "a" });
 
 function render(content, params = {}, beforeHandler = null, afterHandler = null) {
@@ -33,7 +35,9 @@ router
             render(() => ProductDetailWithFetch(data));
         },
         "/checkout": () => render(ProductClother, null),
-        "/cosmetics": () => render(Cosmetis, null)
+        "/product-item": () => render(ProductsItem, null),
+        "/cosmetics": () => render(Cosmetis, null),
+        
     })
     .notFound(() => render(NotFoundPage));
 

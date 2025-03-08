@@ -1,5 +1,7 @@
 import { router } from "../../main";
 import "../../style.css";
+import Footer from "../layouts/Footer";
+import Layouts from "../layouts/Layouts";
 function HomePage() {
   return `
 <!DOCTYPE html>
@@ -114,6 +116,7 @@ function HomePage() {
             width: 100%;
             flex: 1;
             height: 600px;
+            margin-top:130px;
         }
         .prev, .next {
             position: absolute;
@@ -135,7 +138,8 @@ footer{
 margin: 10px auto;
 }
 .container{
-color: #fff;
+    margin-top: 30px;
+    color: #fff;
     opacity: 0.9;
 }
 .contact{
@@ -216,62 +220,8 @@ font-size: 18px;
 }
 </style>
 <body>
-   <div class="slider-container">
-        <div class="slide-banner">
-            <img src="https://topprint.vn/wp-content/uploads/2021/07/banner-my-pham-dep-12.png" alt="Banner 1">
-            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/16/banner-quang-cao-my-pham_083548926.jpg" alt="Banner 2">
-            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/09/16/anh-banner-quang-cao-my-pham-dep_083546254.jpg" alt="Banner 3">
-        </div>
-    <button class="prev">❮</button>
-    <button class="next">❯</button>
-</div>
-  <div class="container">
-      <h2 class="text-center my-4">Danh sách sản phẩm</h2>
-      <div id="product-list" class="d-flex flex-wrap justify-content-center">Đang tải...</div>
-  </div>
-  <footer>
-			<div class="container">
-				<div class="contact">
-					<div class="about">
-						<h3>Giới thiệu</h3>
-						<p>Đức Toán Store-Chuỗi phân phối mỹ phẩm, thực phẩm</p>
-						<ul class="info-contact">
-                            <li><i class="fa-solid fa-phone"></i>0333777999</li>
-                            <li><i class="fa-solid fa-envelope"></i>toan@gmail.com</li>
-                            <li><i class="fa-solid fa-clock"></i>Giờ mở cửa: 8:30-22:00</li>
-                            <li><i class="fa-solid fa-headphones"></i>Nhân viên tư vẫn phản hồi nhắn đến 24:00(Mỗi ngày)</li>
-                        </ul>
-					</div>
-					<div class="address">
-						<h3>Địa chỉ cửa hàng</h3>
-                        <ul class= "info-address">
-                            <li>
-                                <h3>Hà Nội</h3>
-						        <p><i class="fa-solid fa-location-dot"></i>Ngõ 59 Phạm Văn Đồng-Mai Dịch-Cầu Giấy-Hà Nội</p>
-                            </li>
-                            <li>
-                                <h3>HỒ CHÍ MINH</h3>
-						        <p><i class="fa-solid fa-location-dot"></i>297/3 Tô Hiến Thành, Phường 13, Quận 10, TP Hồ Chí Minh</p>
-                            </li>
-                        </ul>
-						
-						
-					</div>
-					<div class="pay">
-						<h3>Phương thức thanh toán</h3>
-						<div class="ol-pay">
-							<p>VNPAY</p>
-							<p>COD</p>
-							<p>	<i class="fa-brands fa-apple-pay"></i></p>
-						</div>
-		
-					</div>
-				</div>
-				<h3>Bản quyền thuộc về Đức Toán Store</h3>
-			</div>
-	
-			</footer>
-
+    ${Layouts()}
+  
 
   <script src="/src/app.js"></script>
 </body>
@@ -279,6 +229,9 @@ font-size: 18px;
   `;
 }
 // slide-banner
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     const slides = document.querySelector(".slide-banner");
@@ -368,8 +321,8 @@ function fetchProducts() {
     fetch("http://localhost:3000/products")
         .then(response => response.json())
         .then(products => {
-            productsData = products; // Lưu toàn bộ danh sách sản phẩm
-            renderProducts(); // Gọi hàm hiển thị sản phẩm
+            productsData = products; 
+            renderProducts();
         })
         .catch(error => {
             console.log("Lỗi dữ liệu", error);

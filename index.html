@@ -28,9 +28,8 @@
 }
 .cart-icon {
     position: fixed;
-    top: 20px;
+    top: -21px;
     right: 20px;
-    background: #fff;
     padding: 15px;
 	margin-top: 50px;
     border-radius: 50%;
@@ -63,7 +62,9 @@
     display: none; 
     flex-direction: column;
 }
-
+#app{
+	background-color: #292e39;
+}
 
 .modal-content {
     display: flex;
@@ -137,89 +138,84 @@
     outline: none;
 }
 .header{
-	position: fixed;
-	z-index: 2;
 	width: 100%;
-	
+
 }
+.container{
+	border-radius: 20px;
+	padding: 20px 20px;
+}
+#product-list{
+	border-radius: 5px;
+}
+/* Search */
+.form-search{
+	display: flex;
+	margin-right: 300px;
+	position: relative;
+	padding: 20px 20px;
+	width: 100%;
+}
+.form-control{
+	padding: 10px 20px;
+	width: 100%;
+	height: 50px;
+}
+.form-search i{
+	position: absolute;
+	right: 70px;
+	top: 30px;
+	width: 60px;
+	background-color: #000;
+	color: #fff;
+	padding: 10px 20px;
+}
+#navbarSupportedContent{
+	width: 100%;
+	color: #fff;
+	height: 100px;
+	top: 0;
+}
+#navbarDropdown{
+	color: #fff;
+}
+.nav-item {
+	color: #a31818;
+}
+.container-fluid{
+	margin-top: 20px;
+	padding: 20px 20px;
+}
+#productList{
+	display: flex;
+	position: absolute;
+	top: 100%;
+	flex-wrap: wrap;
+	width: 70%;
+	margin: 0px auto;
+	right: 15%;
 
+}
+#userDropdown{
+	background-color:#171c28 ;
+	color: #fff;
+	font-size: 20px;
+}
+.home{
+	text-decoration: none;
+	color: #fff;
+	width: 100px;
+	margin-top: 8px;
+}
+#searchButton{
+	background-color: #171c28;
 
-
-
+}
 	</style>
 	<body>
 		<!-- header -->
 
-		<div class="header">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light " >
-			
-				<div class="container-fluid">
-				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				  </button>
-				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
-					  </li>
-					  <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Danh mục sản phẩm
-						  </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						  <li><a class="dropdown-item" href="/cother">Quần Áo</a></li>
-						  <li><a class="dropdown-item" href="/cosmetics">Mỹ Phẩm</a></li>
-						</ul>
-					  </li>
-					</ul>
-					<div>
-						<input type="text" class="form-control" style="width: 400px; text-align: center;" aria-label="Sizing example input"><i class="fa-solid fa-magnifying-glass"></i>
-					</div>
-					
-	
-				
-					<!-- 🛒 ICON GIỎ HÀNG -->
-					<div id="cart-icon" class="cart-icon">
-						<i class="fa-solid fa-cart-shopping"></i>
-						<span id="cart-count">0</span>
-					</div>
-	
-					<!-- 🛒 MODAL GIỎ HÀNG -->
-					<div id="cart-modal" class="modal">
-						<div class="modal-content">
-							<span class="close">&times;</span>
-							<h2>GIỎ HÀNG</h2>
-	
-							<!-- Danh sách sản phẩm -->
-							<div id="cart-items"></div>
-	
-							<!-- Tổng tiền -->
-							<div class="cart-sum">
-								<div class="cart-summary">
-									<p>Tổng tiền hàng: <span id="subtotal">0đ</span></p>
-									<p>Phí vận chuyển: <span>0đ</span></p>
-									<p>Giảm giá: <span>0đ</span></p>
-									<h3>Tổng đơn hàng: <span id="total">0đ</span></h3>
-								</div>
 		
-								<!-- Nút thao tác -->
-								<div class="cart-buttons">
-									<button id="view-cart">XEM GIỎ HÀNG</button>
-									<button id="checkout">THANH TOÁN</button>
-								</div>
-							</div>
-						</div>
-					</div>
-	
-					<div>
-						<a href="/register">Register</a>
-						<a href="/login">Login</a>
-					</div>
-					
-				  </div>
-				</div>
-			  </nav>
-		</div>
 		  <!--footer-->
 		
 		 
